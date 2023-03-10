@@ -1,0 +1,46 @@
+GET http://localhost/super-admin/test
+
+###
+GET http://localhost/user/test
+
+###  add super admin
+POST http://localhost/user/register
+Content-Type: application/json
+
+{
+"name":"admin",
+"email":"admin",
+"password":"admin"
+}
+
+
+### Registration
+POST http://localhost/user/register
+Content-Type: application/json
+
+{
+"name":"laxman",
+"email":"lakshman5296@gmail.com",
+"password":"Laxmana@123"
+}
+
+### Login
+POST http://localhost/user/login
+Content-Type: application/json
+
+{
+"email":"admin",
+"password":"admin"
+}
+
+### Assign role
+
+PUT http://localhost/super-admin/role/user/lakshmana5296@gmail.com
+Content-Type: application/json
+
+{
+    "role":"admin"
+}
+
+### Get all users to whom role is not yet allocated
+GET http://localhost/super-admin/role/not-assigned-users
