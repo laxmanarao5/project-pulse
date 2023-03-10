@@ -37,6 +37,7 @@ Content-Type: application/json
 
 PUT http://localhost/super-admin/role/user/lakshmana5296@gmail.com
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
 
 {
     "role":"admin"
@@ -44,3 +45,4 @@ Content-Type: application/json
 
 ### Get all users to whom role is not yet allocated
 GET http://localhost/super-admin/role/not-assigned-users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
