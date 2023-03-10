@@ -30,9 +30,13 @@ exports.login=expressAsyncHandler(async(req,res)=>{
     //user not found - send response
     if(user==null || user.role==null)
     res.send({message:"Email id is not registered with us or contact super admin"})
+    //user found
     else{
+        //compare password with password stored in db
         if(await bcryptjs.compare(req.body.password,user.password)){
-            let signedToken=jwt.sign({email:req.email,role:user.role},process.env.SECRET_KEY)
+            //generate token
+            let signedToken=jwt.sign({email:req.email,role:user.role},process.env.SECRET_KEY,{expiresIn:100000})
+            //send token along with response
             res.send({message:"Login sucess",token:signedToken})
         }
     }

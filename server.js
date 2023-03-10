@@ -19,11 +19,14 @@ sequelize.authenticate()
 .catch(err=>console.log("Error occured : ",err))
 
 //import APIs
-// const suAdminApp=require("./routes/superAdmin.route")
+const suAdminApp=require("./routes/superAdmin.route")
 const userApp=require("./routes/user.route")
 
-// //Routing to Super admin API
-// app.use("/super-admin",suAdminApp)
+//import authentication middleware
+const {superUSerPrivateRoute}=require("./middlewares/superUserPrivateRoute.middleware") 
+
+//Routing to Super admin API
+app.use("/super-admin",superUSerPrivateRoute,suAdminApp)
 
 //Routing to User API
 app.use("/user",userApp)
