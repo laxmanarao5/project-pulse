@@ -13,7 +13,10 @@ exports.superUSerPrivateRoute=(req,res,next)=>{
             //verifying jwt token
            let result=jwt.verify(token,process.env.SECRET_KEY)
             //if valid token send req to next middleware else generate an error
+            if(result.role=="super_admin")
             next()
+            else
+            res.send({message:"Unautherized acces"})
         }
         catch{
             //if error occured means token expired
