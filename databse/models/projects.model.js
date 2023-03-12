@@ -19,7 +19,6 @@ exports.Project=sequelize.define("project",{
     },
     client:{
         type:DataTypes.STRING,
-        unique:true,
         allowNull:false
     },
     client_account_manager:{

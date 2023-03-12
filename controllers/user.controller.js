@@ -54,7 +54,8 @@ exports.login=expressAsyncHandler(async(req,res)=>{
         //compare password with password stored in db
         if(await bcryptjs.compare(req.body.password,user.password)){
             //generate token
-            let signedToken=jwt.sign({email:req.email,role:user.role},process.env.SECRET_KEY,{expiresIn:100000})
+            console.log(user.email);
+            let signedToken=jwt.sign({email:user.email,role:user.role},process.env.SECRET_KEY,{expiresIn:100000})
             //send token along with response
             res.send({message:"Login sucess",token:signedToken})
         }
