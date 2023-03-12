@@ -21,6 +21,8 @@ sequelize.authenticate()
 //import APIs
 const suAdminApp=require("./routes/superAdmin.route")
 const userApp=require("./routes/user.route")
+const adminApp=require("./routes/admin.route")
+const pmApp=require("./routes/project_manager.route")
 
 //import authentication middleware
 const {superUSerPrivateRoute}=require("./middlewares/superUserPrivateRoute.middleware") 
@@ -31,8 +33,11 @@ app.use("/super-admin",superUSerPrivateRoute,suAdminApp)
 //Routing to User API
 app.use("/user",userApp)
 
+//Routing to admin API
+app.use("/admin",adminApp)
 
-
+//Routing to Project manager API
+app.use("/project-manager",pmApp)
 
 //Invalid path middleware
 app.use("*",(req,res)=>{

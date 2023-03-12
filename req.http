@@ -3,15 +3,8 @@ GET http://localhost/super-admin/test
 ###
 GET http://localhost/user/test
 
-###  add super admin
-POST http://localhost/user/register
-Content-Type: application/json
 
-{
-"name":"admin",
-"email":"admin",
-"password":"admin"
-}
+###########################   User API  ###########################################
 
 
 ### Registration
@@ -29,12 +22,49 @@ POST http://localhost/user/login
 Content-Type: application/json
 
 {
+"email":"lakshmana5296@gmail.com",
+"password":"laxmana4321"
+}
+
+### Forget Password
+POST http://localhost/user/forget-password
+Content-Type: application/json
+
+{
+"email":"lakshmana5296@gmail.com"
+}
+
+### reset password
+POST http://localhost/user/reset-password//email/lakshmana5296@gmail.com
+Content-Type: application/json
+
+{
+    "otp":421493,
+    "password":"laxmana4321"
+}
+
+
+###########################   Super Admin API  ############################################
+
+###  add super admin
+POST http://localhost/user/register
+Content-Type: application/json
+
+{
+"name":"admin",
+"email":"admin",
+"password":"admin"
+}
+### Login
+POST http://localhost/user/login
+Content-Type: application/json
+
+{
 "email":"admin",
 "password":"admin"
 }
 
 ### Assign role
-
 PUT http://localhost/super-admin/role/user/lakshmana5296@gmail.com
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
@@ -46,3 +76,66 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfY
 ### Get all users to whom role is not yet allocated
 GET http://localhost/super-admin/role/not-assigned-users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
+
+
+##################################  Admin API #####################################################
+##Test Route
+GET http://localhost/admin/test
+
+### Add a project
+POST http://localhost/admin/project
+Content-Type: application/json
+
+{
+    "client":"NIKE",
+    "project_name":"E-Commerce",
+    "client_account_manager":123,
+    "status":"In progress",
+    "start_date":"10-03-2023",
+    "domain":"Development",
+    "project_type":"app_development",
+    "gdo":"gdo1@westagilelabs.com",
+    "project_manager":"pm1@westagilelabs.com" 
+}
+
+### Resolve a concern
+PUT http://localhost/admin/concern/1
+Content-Type: application/json
+
+{
+    "status":"mitigated"
+}
+
+### Get all projects
+GET http://localhost/admin/projects
+
+### Get project detailed information by project id
+GET http://localhost/admin/project/1
+
+
+#####################################Project manager API ############################
+### test
+GET http://localhost/project-manager/test
+
+### post project updates
+
+POST http://localhost/project-manager/update/1
+Content-Type: application/json
+
+{
+    "project_status":"green",
+    "shedule_status":"green",
+    "resourcing_status":"green",
+    "quality_status":"green",
+    "waiting_for_client_inputs":false
+}
+
+### post concern
+POST http://localhost/project-manager/concern/1
+Content-Type: application/json
+
+{
+    "description":"description of concern",
+    "severity":"High",
+    "raised_by_client":false
+}
