@@ -12,8 +12,8 @@ POST http://localhost/user/register
 Content-Type: application/json
 
 {
-"name":"laxman",
-"email":"lakshman5296@gmail.com",
+"name":"gdo1",
+"email":"gdo1@westagilelabs.com",
 "password":"Laxmana@123"
 }
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ### reset password
-POST http://localhost/user/reset-password//email/lakshmana5296@gmail.com
+POST http://localhost/user/reset-password/email/lakshmana5296@gmail.com
 Content-Type: application/json
 
 {
@@ -65,12 +65,12 @@ Content-Type: application/json
 }
 
 ### Assign role
-PUT http://localhost/super-admin/role/user/lakshmana5296@gmail.com
+PUT http://localhost/super-admin/role/user/gdo1@westagilelabs.com
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg2MjI5OTksImV4cCI6MTY3ODcyMjk5OX0.-VqiJ--ZqdaCSCAXRwAoFQ44SOgcF7ZEJ45CY7D5xl4
 
 {
-    "role":"admin"
+    "role":"gdo"
 }
 
 ### Get all users to whom role is not yet allocated
@@ -94,9 +94,10 @@ Content-Type: application/json
     "start_date":"10-03-2023",
     "domain":"Development",
     "project_type":"app_development",
-    "gdo":"gdo1@westagilelabs.com",
+    "gdo":"gdo2@westagilelabs.com",
     "project_manager":"pm1@westagilelabs.com" 
 }
+
 
 ### Resolve a concern
 PUT http://localhost/admin/concern/1
@@ -113,16 +114,113 @@ GET http://localhost/admin/projects
 GET http://localhost/admin/project/1
 
 
+
+##################################  GDO Head API #####################################################
+##Test Route
+GET http://localhost/gdo/test
+
+### Login
+POST http://localhost/user/login
+Content-Type: application/json
+
+{
+"email":"gdo1@westagilelabs.com",
+"password":"Laxmana@123"
+}
+
+### Add a project
+POST http://localhost/gdo/project
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+{
+    "client":"NIKE",
+    "project_name":"IOS app",
+    "client_account_manager":123,
+    "status":"In progress",
+    "start_date":"10-03-2023",
+    "domain":"Development",
+    "project_type":"app_development",
+    "project_manager":"pm1@westagilelabs.com" 
+}
+
+
+### Allocate team
+POST http://localhost/gdo/team/project/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI2ODcwLCJleHAiOjE2Nzg3MjY4NzB9.NUAdg-sOHF8qgWePD4wMOyGTp9LFRxx56aX6_SoVqfA
+
+{
+    "team":[
+        {
+            "emp_id":143,
+            "name":"laxman",
+            "role":"Backend-developer",
+            "exposed_to_customer":true,
+            "allocation_type":"Permanent"
+        },
+        {
+            "emp_id":144,
+            "name":"laxman",
+            "role":"devops",
+            "exposed_to_customer":true,
+            "allocation_type":"Permanent"
+        },
+        {
+            "emp_id":145,
+            "name":"laxman",
+            "role":"Frontend-developer",
+            "exposed_to_customer":true,
+            "allocation_type":"Permanent"
+        }
+    ]
+}
+
+### Resolve a concern
+PUT http://localhost/gdo/concern/1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+{
+    "status":"mitigated"
+}
+
+### Get all projects
+GET http://localhost/gdo/projects
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+### Get project detailed information by project id
+GET http://localhost/gdo/project/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+
+
+
 #####################################Project manager API ############################
 ### test
 GET http://localhost/project-manager/test
 
-### post project updates
+
+
+### post project update before two weeks
 
 POST http://localhost/project-manager/update/1
 Content-Type: application/json
 
 {
+    "date":"2023-02-22",
+    "project_status":"red",
+    "shedule_status":"green",
+    "resourcing_status":"green",
+    "quality_status":"green",
+    "waiting_for_client_inputs":false
+}
+### post project update before two weeks
+POST http://localhost/project-manager/update/1
+Content-Type: application/json
+
+{
+    "date":"2023-03-13",
     "project_status":"green",
     "shedule_status":"green",
     "resourcing_status":"green",
@@ -130,12 +228,15 @@ Content-Type: application/json
     "waiting_for_client_inputs":false
 }
 
+
+
 ### post concern
 POST http://localhost/project-manager/concern/1
 Content-Type: application/json
 
 {
+    "raised_date":"2023-02-21",
     "description":"description of concern",
-    "severity":"High",
-    "raised_by_client":false
+    "severity":"Low",
+    "raised_by_client":true
 }

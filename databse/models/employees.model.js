@@ -7,42 +7,42 @@ const bcryptjs=require("bcryptjs")
 //import sequelize
 const {sequelize}=require("../db.config")
 
-exports.Concerns=sequelize.define("concerns",{
-    concern_id:{
+exports.Employees=sequelize.define("employees",{
+    emp_id:{
             type:DataTypes.INTEGER,
-            autoIncrement:true,
             primaryKey:true
     },
-    description:{
+    name:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    raised_by:{
+    role:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    raised_date:{
-        type:DataTypes.DATE,
-        allowNull:false
-    },
-    severity:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    raised_by_client:{
-        type:DataTypes.BOOLEAN,
-        allowNull:false
-    },
-    status:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    mitigated_on_date:{
+    start_date:{
         type:DataTypes.DATE,
         allowNull:true
+    },
+    end_date:{
+        type:DataTypes.DATE,
+        allowNull:true
+    },
+    status:{
+        type:DataTypes.BOOLEAN,
+    },
+    billing_status:{
+        type:DataTypes.STRING
+    },
+    exposed_to_customer:{
+        type:DataTypes.BOOLEAN
+    },
+    allocation_type:{
+        type:DataTypes.STRING
     }
 },{
     freezeTableName:true,
     createdAt:false,
     updatedAt:false
 })
+

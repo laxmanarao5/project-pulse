@@ -19,7 +19,6 @@ exports.Updates=sequelize.define("updates",{
     },
     project_status:{
         type:DataTypes.STRING,
-        unique:true,
         allowNull:false
     },
     shedule_status:{
