@@ -8,7 +8,7 @@ const userApp=exp.Router()
 userApp.use(exp.json())
 
 //import controllers
-const {test,register,login,forgetpassword,resetPassword}=require("../controllers/user.controller")
+const {test,register,login,forgetpassword,resetPassword,deleteUser}=require("../controllers/user.controller")
 
 //test route
 userApp.get("/test",test)
@@ -24,6 +24,8 @@ userApp.post("/forget-password",forgetpassword)
 
 //reset-password
 userApp.post("/reset-password/email/:email",resetPassword)
+
+
 
 //export API
 module.exports=userApp

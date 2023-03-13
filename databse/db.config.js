@@ -16,4 +16,5 @@ exports.sequelize=new Sequelize(
 )
 
 // this.sequelize.sync({force:true})
+// this.sequelize.sync({alter:true})
 this.sequelize.sync()

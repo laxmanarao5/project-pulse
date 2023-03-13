@@ -34,17 +34,26 @@ exports.test=(req,res)=>{
 
 //Registration controller
 exports.register=expressAsyncHandler(async(req,res)=>{
-    //creating user by sending body of request
-    await User.create(req.body)
-    //sending response
-    res.send({message:"User inserted sucessfully"})
+    
+    try{
+        //creating user by sending body of request
+        await User.create(req.body)
+        //sending response
+        res.send({message:"User inserted sucessfully"})
+    }
+    catch(err){
+        //sending response
+        res.send({message:"User with email id already exists,contact admin of the application"})
+    }
+    
 })
 
 
 //Login controller
 exports.login=expressAsyncHandler(async(req,res)=>{
     let user=await User.findOne({where:{
-        email:req.body.email
+        email:req.body.email,
+        status:true
     }})
     //user not found - send response
     if(user==null || user.role==null)
@@ -54,8 +63,11 @@ exports.login=expressAsyncHandler(async(req,res)=>{
         //compare password with password stored in db
         if(await bcryptjs.compare(req.body.password,user.password)){
             //generate token
-            console.log(user.email);
-            let signedToken=jwt.sign({email:user.email,role:user.role},process.env.SECRET_KEY,{expiresIn:100000})
+            user=user.toJSON()
+            delete user.password
+            delete user.status
+            delete user.user_id
+            let signedToken=jwt.sign(user,process.env.SECRET_KEY,{expiresIn:6000000})
             //send token along with response
             res.send({message:"Login sucess",token:signedToken})
         }
@@ -116,3 +128,4 @@ exports.resetPassword=expressAsyncHandler(async(req,res)=>{
         res.send({message:"Invalid OTP"})
     }
 })
+
