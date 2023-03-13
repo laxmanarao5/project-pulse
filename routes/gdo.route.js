@@ -8,7 +8,7 @@ const gdoApp=exp.Router()
 gdoApp.use(exp.json())
 
 //import controllers
-const {test,addProject,getAllProjects,getProjectDetails,resolveConcern,allocateTeam}=require("../controllers/gdo.controller")
+const {test,addProject,getAllProjects,getProjectDetails,resolveConcern,allocateTeam,resourcingRequest}=require("../controllers/gdo.controller")
 
 //test route
 gdoApp.get("/test",test)
@@ -27,6 +27,9 @@ gdoApp.get("/project/:project_id",getProjectDetails)
 
 //resolve a concern
 gdoApp.put("/concern/:concern_id",resolveConcern)
+
+//Resource request
+gdoApp.post("/resource/project/:project_id",resourcingRequest)
 
 //export admin API
 module.exports=gdoApp

@@ -20,6 +20,12 @@ exports.addProject=expressAsyncHandler(async(req,res)=>{
     res.send({message:"Project added sucessfully"})
 })
 
+//Modify project
+exports.modifyProject=expressAsyncHandler(async(req,res)=>{
+    await Project.create(req.body)
+    res.send({message:"Project updated sucessfully"})
+})
+
 //Get all projects
 exports.getAllProjects=expressAsyncHandler(async(req,res)=>{
     let result=await Project.findAll({attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
@@ -39,9 +45,10 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
 
     //fetching project detailed info from database
     let result=await Project.findOne({where:{project_id:req.params.project_id},include:[
-        {association:Project.Updates,attributes:{exclude:["project_id","update_id"]}},
+       // {association:Project.Updates,attributes:{exclude:["project_id","update_id"]}},
         {association:Project.Concerns,attributes:{exclude:["project_id","concern_id"]}},
-        {association:Project.Employees,attributes:{exclude:["project_id"]}}],
+        {association:Project.Employees,attributes:{exclude:["project_id"]}},
+        {association:Project.ResourcingRequests,attributes:{exclude:["project_id"]}}],
         attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
     })
     //sending response
@@ -50,6 +57,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
     res.send({messages:"Projects ",payload:result})
 })
 
+//resolve concern
 exports.resolveConcern=expressAsyncHandler(async(req,res)=>{
     let date=new Date()
     //add today date to request body
@@ -62,3 +70,12 @@ exports.resolveConcern=expressAsyncHandler(async(req,res)=>{
     res.send({message:"Concern resolved"})
 })
 
+//Grant resources
+exports.grantResources=expressAsyncHandler(async(req,res)=>{
+    //updating concern
+    await Concerns.update({status:true},{where:{
+        request_id:req.params.request_id
+    }})
+    //sending response
+    res.send({message:"Concern resolved"})
+})

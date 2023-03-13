@@ -106,9 +106,10 @@ exports.resetPassword=expressAsyncHandler(async(req,res)=>{
     //otp matches
     if(req.body.otp==otps[req.params.email]){
         console.log("password verififed");
-        await User.update({password:req.body.password},{where:{
+       let updateCount= await User.update({password:req.body.password},{where:{
             email:req.params.email
         }})
+        console.log(updateCount);
         res.send({message:"Password reset sucessfully"})
     }
     else{

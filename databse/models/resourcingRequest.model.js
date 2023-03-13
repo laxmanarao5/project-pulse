@@ -16,6 +16,8 @@ exports.ResourcingRequests=sequelize.define("resourcing_requests",{
     date:{
         type:DataTypes.DATE,
         allowNull:false
+    },raised_by:{
+        type:DataTypes.STRING
     },
     resource_role:{
         type:DataTypes.STRING,
