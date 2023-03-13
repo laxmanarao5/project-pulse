@@ -23,7 +23,7 @@ userApp.post("/login",login)
 userApp.post("/forget-password",forgetpassword)
 
 //reset-password
-userApp.post("/reset-password//email/:email",resetPassword)
+userApp.post("/reset-password/email/:email",resetPassword)
 
 //export API
 module.exports=userApp

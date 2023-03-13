@@ -17,7 +17,7 @@ const { ResourcingRequests } = require("../databse/models/resourcingRequest.mode
 
 //Associations
 Project.Employees=Project.hasMany(Employees,{foreignKey:"project_id"})
-Project.ResourcingRequests
+Project.ResourcingRequests=Project.hasMany(ResourcingRequests,{foreignKey:"project_id"})
 
 //test controller
 exports.test=(req,res)=>{
@@ -107,3 +107,22 @@ exports.resolveConcern=expressAsyncHandler(async(req,res)=>{
     res.send({message:"Concern resolved"})
 })
 
+//Raise a resourcing request
+exports.resourcingRequest=expressAsyncHandler(async(req,res)=>{
+    //Assigning todays date
+    req.body.date=new Date()
+    //setting status to false
+    req.body.status=false
+    //add project
+    
+    try{
+        let [bearer,token]=req.headers.authorization.split(" ")
+        let result=jwt.verify(token,process.env.SECRET_KEY)
+        req.body.project_id=req.params.project_id
+        req.body.raised_by=result.email
+        //posting data to database
+        await ResourcingRequests.create(req.body)
+        res.send({message:"Resourcing request created"})
+    }
+    catch(err){}
+})

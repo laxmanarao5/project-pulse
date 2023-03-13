@@ -31,7 +31,7 @@ POST http://localhost/user/forget-password
 Content-Type: application/json
 
 {
-"email":"lakshmana5296@gmail.com"
+"email":"s170116@rguktsklm.ac.in"
 }
 
 ### reset password
@@ -39,7 +39,7 @@ POST http://localhost/user/reset-password/email/lakshmana5296@gmail.com
 Content-Type: application/json
 
 {
-    "otp":421493,
+    "otp":103910,
     "password":"laxmana4321"
 }
 
@@ -95,6 +95,14 @@ Content-Type: application/json
 ###Test Route
 GET http://localhost/admin/test
 
+### Get all projects
+GET http://localhost/admin/projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+
+### Get project detailed information by project id
+GET http://localhost/admin/project/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+
 ### Add a project
 POST http://localhost/admin/project
 Content-Type: application/json
@@ -113,6 +121,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3Nob
 }
 
 
+### Modify a project
+PUT http://localhost/admin/project
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+
+{
+    "client":"NIKE",
+    "project_name":"E-Commerce",
+    "client_account_manager":123,
+    "status":"In progress",
+    "start_date":"10-03-2023",
+    "domain":"Development",
+    "project_type":"app_development",
+    "gdo":"gdo2@westagilelabs.com",
+    "project_manager":"pm1@westagilelabs.com" ,
+    "status":"in progress",
+    "end_date":"2023-03-31",
+    "fitness_indicator":"green"
+}
+
 ### Resolve a concern
 PUT http://localhost/admin/concern/1
 Content-Type: application/json
@@ -122,13 +150,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3Nob
     "status":"mitigated"
 }
 
-### Get all projects
-GET http://localhost/admin/projects
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
-
-### Get project detailed information by project id
-GET http://localhost/admin/project/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
 
 
 ##################################  GDO Head API #####################################################
@@ -143,6 +164,14 @@ Content-Type: application/json
 "email":"gdo1@westagilelabs.com",
 "password":"Laxmana@123"
 }
+
+### Get all projects
+GET http://localhost/gdo/projects
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+### Get project detailed information by project id
+GET http://localhost/gdo/project/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
 
 ### Add a project
 POST http://localhost/gdo/project
@@ -191,6 +220,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd
         }
     ]
 }
+### raise a resourcing request
+POST http://localhost/gdo/resource/project/1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+
+{
+    "resource_role":"devops",
+    "no_of_resources":3
+}
+
 
 ### Resolve a concern
 PUT http://localhost/gdo/concern/1
@@ -201,18 +240,18 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd
     "status":"mitigated"
 }
 
-### Get all projects
-GET http://localhost/gdo/projects
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
 
-### Get project detailed information by project id
-GET http://localhost/gdo/project/1
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+### Allocate team
+POST http://localhost/gdo/resource/project/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI2ODcwLCJleHAiOjE2Nzg3MjY4NzB9.NUAdg-sOHF8qgWePD4wMOyGTp9LFRxx56aX6_SoVqfA
 
+{
+    "resource_role":"Backend-developer",
+    "no_of_resources":5
+}
 
-
-
-#####################################  Project manager API ####################################################
+###########################################  Project manager API  ####################################################
 ### test
 GET http://localhost/project-manager/test
 
