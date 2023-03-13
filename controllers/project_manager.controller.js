@@ -1,6 +1,12 @@
 //import express-async-handler
 const expressAsyncHandler = require("express-async-handler")
 
+//import jwt
+const jwt=require("jsonwebtoken")
+
+//import dotenv
+require("dotenv").config()
+
 ////////////////////////////   SMTP setup ////////////////////////////////////////////////
 
 //import nodemailer
@@ -45,6 +51,49 @@ exports.updates=expressAsyncHandler(async(req,res)=>{
     res.send({message:"Update created sucessfully"})
 })
 
+//Get all projects
+exports.getAllProjects=expressAsyncHandler(async(req,res)=>{
+  try{
+      let [bearer,token]=req.headers.authorization.split(" ")
+      let user=jwt.verify(token,process.env.SECRET_KEY)
+      let result=await Project.findAll({where:{project_manager:user.email},attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
+  })
+  res.send({messages:"Projects ",payload:result})
+  }
+  catch(err){}
+  
+})
+
+//Get project information
+exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
+  try{
+      let [bearer,token]=req.headers.authorization.split(" ")
+      let user=jwt.verify(token,process.env.SECRET_KEY)
+  
+  
+  //today date
+  let endOfDateRange=new Date()
+
+  //Date before two weeks
+  let startOfDateRange=new Date()
+  startOfDateRange.setDate(endOfDateRange.getDate() - 14)
+  console.log(startOfDateRange,endOfDateRange);
+
+  //fetching project detailed info from database
+  let result=await Project.findOne({where:{project_id:req.params.project_id,project_manager:user.email},include:[
+      {association:Project.Updates,attributes:{exclude:["project_id","update_id"]}},
+      {association:Project.Concerns,attributes:{exclude:["project_id","concern_id"]}},
+  {association:Project.Employees,attributes:{exclude:["project_id"]}}],
+      attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
+  })
+  let team_members=result.employees.length+3
+  result.dataValues.team_members=team_members
+  //sending response
+  res.send({messages:"Projects ",payload:result})
+  }
+  catch(err){}
+})
+
 //project concerns
 exports.concern=expressAsyncHandler(async(req,res)=>{
     let date=new Date()
@@ -81,16 +130,15 @@ exports.concern=expressAsyncHandler(async(req,res)=>{
         Severity    : ${req.body.severity}.
         Raised by client : ${req.body.raised_by_client}.`
       }
-    console.log(emails);
     //send email
-    // transporter.sendMail(mailOptions, function(error, info){
-    //     if (error) {
-    //       console.log(error);
-    //     } else {
-    //       console.log('Email sent: ' + info.response);
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
           
-    //     }
-    //   })
+        }
+      })
     //posting data into database
     await Concerns.create(req.body)
 

@@ -12,10 +12,12 @@ const { Op, DATE } = require('sequelize');
 
 //import projects model
 const {Project}=require("../databse/models/projects.model")
-const { Employees } = require("../databse/models/employees.model")
+const { Employees } = require("../databse/models/employees.model");
+const { ResourcingRequests } = require("../databse/models/resourcingRequest.model");
 
 //Associations
 Project.Employees=Project.hasMany(Employees,{foreignKey:"project_id"})
+Project.ResourcingRequests
 
 //test controller
 exports.test=(req,res)=>{
@@ -78,18 +80,21 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
     console.log(startOfDateRange,endOfDateRange);
 
     //fetching project detailed info from database
-    let result=await Project.findAll({where:{project_id:req.params.project_id,gdo:user.email},include:[
+    let result=await Project.findOne({where:{project_id:req.params.project_id,gdo:user.email},include:[
         {association:Project.Updates,attributes:{exclude:["project_id","update_id"]}},
         {association:Project.Concerns,attributes:{exclude:["project_id","concern_id"]}},
     {association:Project.Employees,attributes:{exclude:["project_id"]}}],
         attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
     })
+    let team_members=result.employees.length+3
+    result.dataValues.team_members=team_members
     //sending response
     res.send({messages:"Projects ",payload:result})
     }
     catch(err){}
 })
 
+//Resolve cocern
 exports.resolveConcern=expressAsyncHandler(async(req,res)=>{
     let date=new Date()
     //add today date to request body
