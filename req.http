@@ -12,8 +12,8 @@ POST http://localhost/user/register
 Content-Type: application/json
 
 {
-"name":"pm1",
-"email":"pm1@westagilelabs.com",
+"name":"gdo2",
+"email":"gdo2@westagilelabs.com",
 "password":"Laxmana@123"
 }
 
@@ -42,6 +42,8 @@ Content-Type: application/json
     "otp":103910,
     "password":"laxmana4321"
 }
+
+
 
 
 ###########################   Super Admin API  ############################################
@@ -73,13 +75,23 @@ GET http://localhost/super-admin/role/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
 
 ### Assign/Update role
-PUT http://localhost/super-admin/role/user/pm1@westagilelabs.com
+PUT http://localhost/super-admin/role/user/gdo2@westagilelabs.com
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg2MjI5OTksImV4cCI6MTY3ODcyMjk5OX0.-VqiJ--ZqdaCSCAXRwAoFQ44SOgcF7ZEJ45CY7D5xl4
 
 {
-    "role":"project_manager"
+    "role":"gdo"
 }
+
+### Delete user
+DELETE http://localhost/super-admin/delete/user/lakshmana5296@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg2MjI5OTksImV4cCI6MTY3ODcyMjk5OX0.-VqiJ--ZqdaCSCAXRwAoFQ44SOgcF7ZEJ45CY7D5xl4
+
+### undo Delete user
+PATCH  http://localhost/super-admin/delete/user/lakshmana5296@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg2MjI5OTksImV4cCI6MTY3ODcyMjk5OX0.-VqiJ--ZqdaCSCAXRwAoFQ44SOgcF7ZEJ45CY7D5xl4
+
+
 
 ##################################  Admin API #####################################################
 
@@ -101,6 +113,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3Nob
 
 ### Get project detailed information by project id
 GET http://localhost/admin/project/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+
+### Soft-Delete Project
+DELETE http://localhost/admin/project/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+
+### Undo-Soft-Delete Project
+PATCH http://localhost/admin/project/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
 
 ### Add a project
@@ -169,7 +189,7 @@ Content-Type: application/json
 GET http://localhost/gdo/projects
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
 
-### Get project detailed information by project id
+### Get detailed project information by project id
 GET http://localhost/gdo/project/1
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
 
@@ -286,7 +306,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBtMUB3Z
     "quality_status":"green",
     "waiting_for_client_inputs":false
 }
-### post project update before two weeks
+### post project updates today
 POST http://localhost/project-manager/update/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBtMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0X21hbmFnZXIiLCJpYXQiOjE2Nzg2ODIwOTYsImV4cCI6MTY3ODc4MjA5Nn0.W8av3Cdo5koUumpMzqmxkSTpYCMgs2sGuUMUirFvKGQ

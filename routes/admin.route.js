@@ -8,7 +8,7 @@ const adminApp=exp.Router()
 adminApp.use(exp.json())
 
 //import controllers
-const {test,addProject,getAllProjects,getProjectDetails,resolveConcern,modifyProject,grantResources}=require("../controllers/admin.controller")
+const {test,addProject,getAllProjects,getProjectDetails,resolveConcern,modifyProject,grantResources,deleteProject,undoDeleteProject}=require("../controllers/admin.controller")
 
 //test route
 adminApp.get("/test",test)
@@ -21,6 +21,12 @@ adminApp.put("/project",modifyProject)
 
 //get all projects
 adminApp.get("/projects",getAllProjects)
+
+//Delete project
+adminApp.delete("/project/:project_id",deleteProject)
+
+//Undo delete
+adminApp.patch("/project/:project_id",undoDeleteProject)
 
 //get project full details
 adminApp.get("/project/:project_id",getProjectDetails)

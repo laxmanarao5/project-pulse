@@ -34,3 +34,19 @@ exports.getUsers=expressAsyncHandler(async(req,res)=>{
     }})
     res.send({message:"Users are",payload:result})
 })
+
+//Delete user
+exports.deleteUser=expressAsyncHandler(async(req,res)=>{
+    await User.update({status:false},{where:{
+        email:req.params.email
+    }})
+    res.send({message:"User deleted sucessfully"})
+})
+
+//Delete user
+exports.undoDeleteUser=expressAsyncHandler(async(req,res)=>{
+    await User.update({status:true},{where:{
+        email:req.params.email
+    }})
+    res.send({message:"User delete rollbacked"})
+})

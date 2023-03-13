@@ -33,6 +33,10 @@ exports.User=sequelize.define("user",{
     role:{
         type:DataTypes.STRING,
         allowNull:true
+    },
+    status:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:true
     }
 },{
     freezeTableName:true

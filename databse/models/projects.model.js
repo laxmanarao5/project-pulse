@@ -51,6 +51,10 @@ exports.Project=sequelize.define("project",{
     },
     project_manager:{
         type:DataTypes.STRING
+    },
+    active:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:true
     }
 
 },{
