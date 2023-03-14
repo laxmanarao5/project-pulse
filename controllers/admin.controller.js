@@ -46,7 +46,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
     //fetching project detailed info from database
     let result=await Project.findOne({where:{project_id:req.params.project_id,active:true},include:[
        // {association:Project.Updates,attributes:{exclude:["project_id","update_id"]}},
-        {association:Project.Concerns,attributes:{exclude:["project_id","concern_id"]}},
+        {association:Project.Concerns,attributes:{exclude:["project_id"]}},
         {association:Project.Employees,attributes:{exclude:["project_id"]}},
         {association:Project.ResourcingRequests,attributes:{exclude:["project_id"]}}],
         attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]

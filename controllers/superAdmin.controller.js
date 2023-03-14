@@ -31,6 +31,8 @@ exports.not_assigned_users=expressAsyncHandler(async(req,res)=>{
 exports.getUsers=expressAsyncHandler(async(req,res)=>{
     let result=await User.findAll({attributes:{
         exclude:["password","role","createdAt","updatedAt"]
+    }},{where:{
+        status:true
     }})
     res.send({message:"Users are",payload:result})
 })
