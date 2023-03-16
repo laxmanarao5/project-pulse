@@ -57,9 +57,9 @@ POST http://localhost/user/register
 Content-Type: application/json
 
 {
-"name":"admin",
-"email":"admin",
-"password":"admin"
+"name":"laxman",
+"email":"laxman13425@westagilelabs.com",
+"password":"Laxmana@123"
 }
 ### -------------------------------- Login -----------------------------------------------
 POST http://localhost/user/login
@@ -72,7 +72,7 @@ Content-Type: application/json
 
 ### ------------------- Get all users to whom role is not yet allocated ----------------------
 GET http://localhost/super-admin/role/not-assigned-users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2Nzg0NzY3MDZ9.Z9syt_flo9Meh5jg2YVBnReW7rYbfUeKh2mYPZpMUx4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluIiwicm9sZSI6InN1cGVyX2FkbWluIiwiY3JlYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwiaWF0IjoxNjc4Nzk1OTg4fQ.rx2emTDBkDPJKxBQaUF2uNp-lzQhpZZB60zExjumbmE
 
 ### -------------------------  Get all users  --------------------------------
 GET http://localhost/super-admin/role/users
@@ -194,11 +194,11 @@ Content-Type: application/json
 
 ### -------------------------------- Get all projects ----------------------------------------
 GET http://localhost/gdo/projects
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjEwOjUzLjAwMFoiLCJpYXQiOjE2Nzg3Nzg1MTYsImV4cCI6MTY4NDc3ODUxNn0.gErO9mlTFOeheOLZVG9vWivDAm0A35Hna9x0ZzjKL0Y
 
 ### ------------------------ Get detailed project information by project id --------------------
-GET http://localhost/gdo/project/1
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+GET http://localhost/gdo/project/4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjEwOjUzLjAwMFoiLCJpYXQiOjE2Nzg3Nzg1MTYsImV4cCI6MTY4NDc3ODUxNn0.gErO9mlTFOeheOLZVG9vWivDAm0A35Hna9x0ZzjKL0Y
 
 ### --------------------------------  Add a project ---------------------------------------------
 POST http://localhost/gdo/project

@@ -39,7 +39,7 @@ exports.register=expressAsyncHandler(async(req,res)=>{
         //creating user by sending body of request
         await User.create(req.body)
         //sending response
-        res.send({message:"User inserted sucessfully"})
+        res.status(201).send({message:"User inserted sucessfully"})
     }
     catch(err){
         //sending response
@@ -57,7 +57,7 @@ exports.login=expressAsyncHandler(async(req,res)=>{
     }})
     //user not found - send response
     if(user==null || user.role==null)
-    res.send({message:"Email id is not registered with us or contact super admin"})
+    res.status(401).send({message:"Email id is not registered with us or contact super admin"})
     //user found
     else{
         //compare password with password stored in db
@@ -67,12 +67,12 @@ exports.login=expressAsyncHandler(async(req,res)=>{
             delete user.password
             delete user.status
             delete user.user_id
-            let signedToken=jwt.sign(user,process.env.SECRET_KEY,{expiresIn:6000000})
+            let signedToken=jwt.sign(user,process.env.SECRET_KEY)
             //send token along with response
             res.send({message:"Login sucess",token:signedToken})
         }
         else{
-            res.send({message:"Invalid credentials"})
+            res.status(401).send({message:"Invalid credentials"})
         }
     }
 

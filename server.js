@@ -4,12 +4,6 @@ const exp=require("express")
 //call the express fucntion
 const app=exp()
 
-//import dot env
-require("dotenv").config()
-
-//expose to port
-app.listen(process.env.PORT||80,()=>console.log("Listening to port 80"))
-
 //import database connection
 const {sequelize}=require("./databse/db.config")
 
@@ -54,8 +48,11 @@ app.use("*",(req,res)=>{
     res.send({message:"Invalid path"})
 })
 
-
 //Error handler middleware
 app.use((err,req,res,next)=>{
     res.send({message:"error occured",error:err.message})
 })
+
+
+//export app
+module.exports=app

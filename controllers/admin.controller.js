@@ -22,7 +22,7 @@ exports.addProject=expressAsyncHandler(async(req,res)=>{
 
 //Modify project
 exports.modifyProject=expressAsyncHandler(async(req,res)=>{
-    await Project.create(req.body)
+    await Project.update(req.body)
     res.send({message:"Project updated sucessfully"})
 })
 
@@ -99,16 +99,23 @@ exports.grantResources=expressAsyncHandler(async(req,res)=>{
 //Soft-Delete project
 
 exports.deleteProject=expressAsyncHandler(async(req,res)=>{
-    await Project.update({active:false},{where:{
+    let updateCount=await Project.update({active:false},{where:{
         project_id:req.params.project_id
     }})
+    if(updateCount!=0)
     res.send({message:"Project deleted sucessfully"})
+    else
+    res.status(204).send({message:"user not found to update"})
 })
+
 
 //undo-Delete project
 exports.undoDeleteProject=expressAsyncHandler(async(req,res)=>{
-    await Project.update({active:true},{where:{
+    let updateCount=await Project.update({active:true},{where:{
         project_id:req.params.project_id
     }})
-    res.send({message:"Project Undo sucessfull"})
+    if(updateCount!=0)
+    res.send({message:"Project deleted undo sucessfully"})
+    else
+    res.status(204).send({message:"user not found to update"})
 })
