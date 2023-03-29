@@ -8,7 +8,7 @@ const suAdminApp=exp.Router()
 suAdminApp.use(exp.json())
 
 //import controllers
-const {test,allocate,not_assigned_users,getUsers,deleteUser,undoDeleteUser}=require("../controllers/superAdmin.controller")
+const {test,allocate,not_assigned_users,getUsers,deleteUser,undoDeleteUser,getBlockedUsers}=require("../controllers/superAdmin.controller")
 
 //test route
 suAdminApp.get("/test",test)
@@ -19,6 +19,9 @@ suAdminApp.get("/role/not-assigned-users",not_assigned_users)
 //To get all records of registered users
 suAdminApp.get("/role/users",getUsers)
 
+//To get all records of Blocked users
+suAdminApp.get("/blocked-users",getBlockedUsers)
+
 //Role allocation
 suAdminApp.put("/role/user/:user_email",allocate)
 
@@ -26,7 +29,7 @@ suAdminApp.put("/role/user/:user_email",allocate)
 suAdminApp.delete("/delete/user/:email",deleteUser)
 
 //undo-deletion
-suAdminApp.patch("/delete/user/:email",undoDeleteUser)
+suAdminApp.delete("/undo-delete/user/:email",undoDeleteUser)
 
 
 //export API

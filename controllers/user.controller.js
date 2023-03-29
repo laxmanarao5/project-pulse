@@ -57,7 +57,7 @@ exports.login=expressAsyncHandler(async(req,res)=>{
     }})
     //user not found - send response
     if(user==null || user.role==null)
-    res.status(401).send({message:"Email id is not registered with us or contact super admin"})
+    res.status(200).send({message:"Email id is not registered with us or contact super admin"})
     //user found
     else{
         //compare password with password stored in db
@@ -68,11 +68,12 @@ exports.login=expressAsyncHandler(async(req,res)=>{
             delete user.status
             delete user.user_id
             let signedToken=jwt.sign(user,process.env.SECRET_KEY)
+            console.log(user);
             //send token along with response
-            res.send({message:"Login sucess",token:signedToken})
+            res.send({message:"success",token:signedToken,user:user})
         }
         else{
-            res.status(401).send({message:"Invalid credentials"})
+            res.status(200).send({message:"Invalid Password"})
         }
     }
 
@@ -129,3 +130,18 @@ exports.resetPassword=expressAsyncHandler(async(req,res)=>{
     }
 })
 
+
+exports.getAllManagementEmployees = expressAsyncHandler(async(req,res)=>{
+    let gdoResult = await User.findAll({where:{
+        role:"gdo"
+    },attributes:{
+        include:["email"]
+    }})
+    let pmResult = await User.findAll({where:{
+        role:"project_manager"
+    },attributes:{
+        include:["email"]
+    }})
+
+    res.send({gdo:gdoResult,pm:pmResult})
+})

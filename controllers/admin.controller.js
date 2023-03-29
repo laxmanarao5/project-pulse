@@ -28,7 +28,7 @@ exports.modifyProject=expressAsyncHandler(async(req,res)=>{
 
 //Get all projects
 exports.getAllProjects=expressAsyncHandler(async(req,res)=>{
-    let result=await Project.findAll({where:{active:true},attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
+    let result=await Project.findAll({where:{active:true},attributes:["project_id","project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
     })
     res.send({messages:"Projects ",payload:result})
 })
@@ -49,7 +49,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
         {association:Project.Concerns,attributes:{exclude:["project_id"]}},
         {association:Project.Employees,attributes:{exclude:["project_id"]}},
         {association:Project.ResourcingRequests,attributes:{exclude:["project_id"]}}],
-        attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
+        attributes:["project_id","project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
     })
     if(result==null)
     res.send({message:"Project not found"})

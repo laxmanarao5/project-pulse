@@ -4,6 +4,10 @@ const exp=require("express")
 //call the express fucntion
 const app=exp()
 
+//import cors
+const cors=require("cors")
+//cors configuration
+app.use(cors())
 //import database connection
 const {sequelize}=require("./databse/db.config")
 
@@ -32,6 +36,9 @@ app.use("/super-admin",superUSerPrivateRoute,suAdminApp)
 //Routing to User API
 app.use("/user",userApp)
 
+
+
+
 //Routing to admin API
 app.use("/admin",adminPrivateRoute,adminApp)
 
@@ -40,6 +47,11 @@ app.use("/project-manager",pmPrivateRoute,pmApp)
 
 //Routing to GDO head
 app.use("/gdo",gdoPrivateRoute,gdoApp)
+
+
+
+app.listen(process.env.PORT||80,()=>console.log("Listening to port 80"))
+
 
 
 

@@ -23,7 +23,7 @@ exports.not_assigned_users=expressAsyncHandler(async(req,res)=>{
     let result=await User.findAll({where:{
         role:null
     },attributes:{
-        exclude:["password","role","createdAt","updatedAt"]
+        exclude:["password","createdAt","updatedAt"]
     }})
     //send response
     res.status(200).send({message:"Users are",payload:result})
@@ -31,10 +31,21 @@ exports.not_assigned_users=expressAsyncHandler(async(req,res)=>{
 
 //Get all users
 exports.getUsers=expressAsyncHandler(async(req,res)=>{
-    let result=await User.findAll({attributes:{
-        exclude:["password","createdAt","updatedAt"]
-    }},{where:{
+    let result=await User.findAll({where:{
         status:true
+    }},{attributes:{
+        exclude:["password","createdAt","updatedAt"]
+    }})
+    //send response
+    res.send({message:"Users are",payload:result})
+})
+
+//Get all users
+exports.getBlockedUsers=expressAsyncHandler(async(req,res)=>{
+    let result=await User.findAll({where:{
+        status:false
+    }},{attributes:{
+        exclude:["password","createdAt","updatedAt"]
     }})
     //send response
     res.send({message:"Users are",payload:result})

@@ -70,6 +70,9 @@ Content-Type: application/json
 "password":"admin"
 }
 
+
+###
+GET http://localhost/user/managers
 ### ------------------- Get all users to whom role is not yet allocated ----------------------
 GET http://localhost/super-admin/role/not-assigned-users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluIiwicm9sZSI6InN1cGVyX2FkbWluIiwiY3JlYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwiaWF0IjoxNjc4Nzk1OTg4fQ.rx2emTDBkDPJKxBQaUF2uNp-lzQhpZZB60zExjumbmE
@@ -92,7 +95,7 @@ DELETE http://localhost/super-admin/delete/user/lakshmana5296@gmail.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluIiwicm9sZSI6InN1cGVyX2FkbWluIiwiY3JlYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwiaWF0IjoxNjc4NzY5MDUwLCJleHAiOjE2ODQ3NjkwNTB9.q2OQoyJ4lfZ3hSGrom7OdmJWLdJMYpk0ZGCwlXEw-Qc
 
 ### ------------------------- undo Delete user -----------------------------
-PATCH  http://localhost/super-admin/delete/user/lakshmana5296@gmail.com
+DELETE  http://localhost/super-admin/delete/user/lakshman5296@gmail.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluIiwicm9sZSI6InN1cGVyX2FkbWluIiwiY3JlYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0xMFQxODozMTozNS4wMDBaIiwiaWF0IjoxNjc4NzY5MDUwLCJleHAiOjE2ODQ3NjkwNTB9.q2OQoyJ4lfZ3hSGrom7OdmJWLdJMYpk0ZGCwlXEw-Qc
 
 
@@ -108,7 +111,7 @@ Content-Type: application/json
 
 {
 "email":"lakshmana5296@gmail.com",
-"password":"laxmana4321"
+"password":"12345"
 }
 
 
@@ -118,7 +121,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3Nob
 
 ### Get project detailed information by project id
 GET http://localhost/admin/project/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxha3NobWFuYTUyOTZAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc4NjgxNzQxLCJleHAiOjE2Nzg3ODE3NDF9.AY_Kwtf7eo296KQ6jQXDWpJeXUU816oNT6FjZo5jbN4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGF4bWFuIiwiZW1haWwiOiJsYWtzaG1hbmE1Mjk2QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjMtMDMtMTBUMTg6NDM6MTIuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjMtMDMtMjhUMTE6NTk6MDguMDAwWiIsImlhdCI6MTY4MDA2NDg5MX0.DwEvrynH_Q84BNzOOvygiwNKUh5QAbmH_yDYP3NkeCg
 
 ### Soft-Delete Project
 DELETE http://localhost/admin/project/1
