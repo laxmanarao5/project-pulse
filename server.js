@@ -4,6 +4,11 @@ const exp=require("express")
 //call the express fucntion
 const app=exp()
 
+//import helmet 
+const helmet = require("helmet")
+//setting helmet as app level middleware
+app.use(helmet())
+
 //import cors
 const cors=require("cors")
 //cors configuration
