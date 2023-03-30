@@ -134,14 +134,11 @@ exports.resetPassword=expressAsyncHandler(async(req,res)=>{
 exports.getAllManagementEmployees = expressAsyncHandler(async(req,res)=>{
     let gdoResult = await User.findAll({where:{
         role:"gdo"
-    },attributes:{
-        include:["email"]
     }})
     let pmResult = await User.findAll({where:{
         role:"project_manager"
-    },attributes:{
-        include:["email"]
-    }})
+    }
+})
 
     res.send({gdo:gdoResult,pm:pmResult})
 })

@@ -23,8 +23,9 @@ import AddProjects from './components/admin/AddProjects';
 import GetAllProjectsGDO from './components/gdo/GetAllProjectsGDO';
 import GetAllProjectsPM from './components/projectmanager/GetAllProjectsPM';
 import AddProjectsGDO from './components/gdo/AddProjectsGDO';
-import Concerns from './components/projectmanager/Concerns';
 import ProjectDetailedViewAdmin from './components/admin/ProjectDetailedViewAdmin';
+import ProjectDetailedViewGDO from './components/gdo/ProjectDetailedViewGDO';
+import ProjectDetailedViewPM from './components/projectmanager/ProjectDetailedViewPM';
 
 
 function App() {
@@ -75,10 +76,6 @@ function App() {
             element:<Admin/>,
             children:[
               {
-                path:"all-projects",
-                element:<GetAllAdminProjects/>
-              },
-              {
                 path:"",
                 element:<GetAllAdminProjects/>
               }
@@ -102,12 +99,12 @@ function App() {
                 element:<GetAllProjectsGDO/>
               },
               {
-                path:"all-projects",
-                element:<GetAllProjectsGDO/>
-              },
-              {
                 path:"add-project",
                 element:<AddProjectsGDO/>
+              },
+              {
+                path:"project/:project_id",
+                element:<ProjectDetailedViewGDO/>
               }
             ]
           },
@@ -124,8 +121,8 @@ function App() {
                 element:<GetAllProjectsPM/>
               },
               {
-                path:"concerns",
-                element:<Concerns/>
+                path:"project/:project_id",
+                element:<ProjectDetailedViewPM/>
               }
             ]
           }

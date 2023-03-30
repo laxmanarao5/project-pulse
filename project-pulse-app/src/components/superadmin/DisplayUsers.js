@@ -5,7 +5,7 @@ import axios from 'axios'
 import {useForm} from "react-hook-form"
 function DisplayUsers({users,setUsers,parentComp}) {
 
-    let {handleSubmit,register,setValue,getValues}=useForm()
+    let {register,setValue,getValues}=useForm()
 
 
     //state for modal

@@ -200,13 +200,13 @@ GET http://localhost/gdo/projects
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjEwOjUzLjAwMFoiLCJpYXQiOjE2Nzg3Nzg1MTYsImV4cCI6MTY4NDc3ODUxNn0.gErO9mlTFOeheOLZVG9vWivDAm0A35Hna9x0ZzjKL0Y
 
 ### ------------------------ Get detailed project information by project id --------------------
-GET http://localhost/gdo/project/4
+GET http://localhost/gdo/project/2
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjEwOjUzLjAwMFoiLCJpYXQiOjE2Nzg3Nzg1MTYsImV4cCI6MTY4NDc3ODUxNn0.gErO9mlTFOeheOLZVG9vWivDAm0A35Hna9x0ZzjKL0Y
 
 ### --------------------------------  Add a project ---------------------------------------------
 POST http://localhost/gdo/project
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI0Mjc2LCJleHAiOjE2Nzg3MjQyNzZ9.Wdbr3mGUBO4OCA7K9yZnbzddOZdPWNWEw_VPXcWxnT4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTI4VDExOjU4OjEzLjAwMFoiLCJpYXQiOjE2ODAwODYwNzR9.w5Mk2ekQS_-3sQH8kVSOyIXF73q66mIwYPDR0CubAuM
 
 {
     "client":"NIKE",
@@ -221,9 +221,9 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd
 
 
 ### ---------------------------------- Team composition --------------------------------------------
-POST http://localhost/gdo/team/project/1
+POST http://localhost/gdo/team/project/15
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdkbzFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoiZ2RvIiwiaWF0IjoxNjc4NjI2ODcwLCJleHAiOjE2Nzg3MjY4NzB9.NUAdg-sOHF8qgWePD4wMOyGTp9LFRxx56aX6_SoVqfA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZ2RvMSIsImVtYWlsIjoiZ2RvMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJnZG8iLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTEyVDEyOjA5OjMxLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTI4VDExOjU4OjEzLjAwMFoiLCJpYXQiOjE2ODAwODYwNzR9.w5Mk2ekQS_-3sQH8kVSOyIXF73q66mIwYPDR0CubAuM
 
 {
     "team":[
@@ -304,7 +304,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBtMUB3Z
 
 ### ------------------------- Get project detailed information by project id -----------------
 GET http://localhost/project-manager/project/1
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBtMUB3ZXN0YWdpbGVsYWJzLmNvbSIsInJvbGUiOiJwcm9qZWN0X21hbmFnZXIiLCJpYXQiOjE2Nzg2ODIwOTYsImV4cCI6MTY3ODc4MjA5Nn0.W8av3Cdo5koUumpMzqmxkSTpYCMgs2sGuUMUirFvKGQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicG0xIiwiZW1haWwiOiJwbTFAd2VzdGFnaWxlbGFicy5jb20iLCJyb2xlIjoicHJvamVjdF9tYW5hZ2VyIiwiY3JlYXRlZEF0IjoiMjAyMy0wMy0xM1QwNDozMjoxMy4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wMy0yOFQxMTo1OToxMC4wMDBaIiwiaWF0IjoxNjgwMDgxNzg1fQ.ISuqt_ONhea7e9_MSibnlqAsCXR8c1tAP-AJqGCdTCY
 
 ### ------------------------- post project update before two weeks ---------------------------
 

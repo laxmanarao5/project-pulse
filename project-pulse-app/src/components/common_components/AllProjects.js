@@ -35,13 +35,14 @@ function AllProjects({url}) {
         <div>
         <table className='table table-bordered table-striped table-responsive'>
             
-                <thead className='bg-dark text-white'>
+                <thead className='bg-info text-white'>
                 <tr>
                     <th>Project Name</th>
                     <th>Client</th>
                     <th>Status</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -53,6 +54,7 @@ function AllProjects({url}) {
                     <td>{project.status}</td>
                     <td>{project.start_date.toString().slice(0,10)}</td>
                     <td>{project.end_date===null?"-":project.end_date.toString().slice(0,10)}</td>
+                    <td><button className='btn btn-primary'>View</button></td>
                     </tr>))
                     }
                     </tbody>

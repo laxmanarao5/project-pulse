@@ -10,7 +10,8 @@ const {sequelize}=require("../db.config")
 exports.Employees=sequelize.define("employees",{
     emp_id:{
             type:DataTypes.INTEGER,
-            primaryKey:true
+            primaryKey:true,
+            autoIncrement:true
     },
     name:{
         type:DataTypes.STRING,

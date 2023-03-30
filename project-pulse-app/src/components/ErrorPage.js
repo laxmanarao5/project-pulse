@@ -8,9 +8,10 @@ function ErrorPage() {
   }
   return (
     <div>
-      <div className='text-center m-5'>
-        <h1 className='text-danger'>You're Lost , Click on Homepage to go to Homepage</h1>
-        <button className='btn btn-success m-5' onClick={handleRedirect}>Homepage</button>
+      <div className='text-center m-5' onClick={handleRedirect}>
+        <h1 className='text-danger'>You're Lost </h1>
+        <h1 className='text-danger'>Click Here to go to Homepage</h1>
+        <button className='btn btn-success m-5'>Homepage</button>
       </div>
     </div>
   )

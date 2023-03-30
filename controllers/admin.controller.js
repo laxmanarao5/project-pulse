@@ -49,7 +49,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
         {association:Project.Concerns,attributes:{exclude:["project_id"]}},
         {association:Project.Employees,attributes:{exclude:["project_id"]}},
         {association:Project.ResourcingRequests,attributes:{exclude:["project_id"]}}],
-        attributes:["project_id","project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
+        attributes:["project_id","project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type","gdo","project_manager"]
     })
     if(result==null)
     res.send({message:"Project not found"})
@@ -68,6 +68,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
     }})
     //sending response
     let team_members=result.employees.length+3
+    console.log(projectUpdates);
     result.dataValues.updates=projectUpdates
     result.dataValues.team_members=team_members
     res.send({messages:"Projects ",payload:result})

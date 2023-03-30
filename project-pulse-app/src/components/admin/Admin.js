@@ -22,7 +22,7 @@ function Admin() {
     <div>
       <div className='bg-primary p-4 nav'>
         <li className='nav-item float-end'>
-        <NavLink className='text-warning text-end' onClick={()=>navigate("all-projects")}> All Projects</NavLink>
+        <NavLink className='text-warning text-end' onClick={()=>navigate("")}> All Projects</NavLink>
         </li>
         <li className='nav-item float-end'>
         <NavLink className='text-warning text-end' onClick={()=>navigate("add-project")}> Add Project</NavLink>

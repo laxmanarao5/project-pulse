@@ -57,7 +57,7 @@ exports.getAllProjects=expressAsyncHandler(async(req,res)=>{
     try{
         let [bearer,token]=req.headers.authorization.split(" ")
         let user=jwt.verify(token,process.env.SECRET_KEY)
-        let result=await Project.findAll({where:{gdo:user.email,active:true},attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
+        let result=await Project.findAll({where:{gdo:user.email,active:true},attributes:["project_id","project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator"]
     })
     res.send({messages:"Projects ",payload:result})
     }
@@ -84,7 +84,7 @@ exports.getProjectDetails=expressAsyncHandler(async(req,res)=>{
     let result=await Project.findOne({where:{project_id:req.params.project_id,gdo:user.email,active:true},include:[
         {association:Project.Concerns,attributes:{exclude:["project_id","concern_id"]}},
         {association:Project.Employees,attributes:{exclude:["project_id"]}}],
-        attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type"]
+        attributes:["project_name","client","client_account_manager","status","start_date","end_date","fitness_indicator","domain","project_type","gdo","project_manager"]
     })
     
     //If project not found
